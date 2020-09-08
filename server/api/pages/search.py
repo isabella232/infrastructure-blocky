@@ -112,7 +112,7 @@ def run(API, environ, indata, session):
                         doc['ip'] = doc['rid'].replace('_', '/')
                     found['banlist'].append(doc)
         
-        # Find any iptables rules that may have it as well (max 10)
+        # Find any iptables rules that may have it as well
         found_iptables = 0
         anything = netaddr.IPNetwork("0.0.0.0/0")
         for host in iptables:
@@ -123,10 +123,6 @@ def run(API, environ, indata, session):
                     rule['ip'] = str(rule['ip']) # stringify
                     found['iptables'].append(rule)
                     found_iptables += 1
-                if found_iptables == 10:
-                    break
-            if found_iptables == 10:
-                break
 
         yield json.dumps({"results": found}, indent = 2)
         return
