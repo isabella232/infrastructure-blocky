@@ -177,7 +177,7 @@ def construct_query(doctype, query, initial_terms = []):
                     "aggs": {
                         "clients": {
                             "terms": {
-                                "field": "clientip.keyword",
+                                "field": "client_ip.keyword",
                                 "size": 50,
                                 "order": {
                                     "_count": "desc"
@@ -202,7 +202,7 @@ def construct_query(doctype, query, initial_terms = []):
                     "aggs": {
                         "clients": {
                             "terms": {
-                                "field": "clientip.keyword",
+                                "field": "client_ip.keyword",
                                 "size": 50,
                                 "order": {
                                     "traffic": "desc"
